@@ -18,45 +18,46 @@ Installation:
 
 What the commands do:
 	nmconnect	- works on the full connection list
-	vpn			- automatically adds type=vpn to the search, so "vpn AwesomeCo" is the same as running "nmconnect type=vpn AwesomeCo"
+	vpn		- automatically adds type=vpn to the search, so "vpn AwesomeCo" is the same as running "nmconnect type=vpn AwesomeCo"
 	lan/wlan	- same ideology as vpn
  
 Examples:
 
 ## List all connections
-$ nmconnect
-[*]
-0. "Auto eth0" (type="802-3-ethernet", uuid="guid-guid-guid-guid-guid")
-1. "Auto ILoveSSIDBeacons" (type="802-11-wireless", uuid="guid-guid-guid-guid-guid")
-3. "AwesomeCo" (type="vpn", uuid="guid-guid-guid-guid-guid")
+	$ nmconnect
+	[*]
+	0. "Auto eth0" (type="802-3-ethernet", uuid="guid-guid-guid-guid-guid")
+	1. "Auto ILoveSSIDBeacons" (type="802-11-wireless", uuid="guid-guid-guid-guid-guid")
+	3. "AwesomeCo" (type="vpn", uuid="guid-guid-guid-guid-guid")
  
 ## Search all connections for "auto" (search params are case insensitive)
-$ nmconnect auto
-[search=auto]
-0. "Auto eth0" (type="802-3-ethernet", uuid="guid-guid-guid-guid-guid")
-1. "Auto ILoveSSIDBeacons" (type="802-11-wireless", uuid="guid-guid-guid-guid-guid")
+	$ nmconnect auto
+	[search=auto]
+	0. "Auto eth0" (type="802-3-ethernet", uuid="guid-guid-guid-guid-guid")
+	1. "Auto ILoveSSIDBeacons" (type="802-11-wireless", uuid="guid-guid-guid-guid-guid")
  
 ## The vpn/lan/wlan commands are merely shortcuts, as is shown by the search params (the first line it prints; in the [brackets])
 ## "vpn AwesomeCo" and "nmconnect type=vpn awesomeco" are synonymous.
-$ vpn
-[type=vpn] ## <-- SEARCH PARAMS
-3. "AwesomeCo" (type="vpn", uuid="guid-guid-guid-guid-guid")
+	$ vpn
+	[type=vpn] ## <-- SEARCH PARAMS
+	3. "AwesomeCo" (type="vpn", uuid="guid-guid-guid-guid-guid")
  
-$ nmconnect type=vpn
-[type=vpn]
-3. "AwesomeCo" (type="vpn", uuid="guid-guid-guid-guid-guid")
+	$ nmconnect type=vpn
+	[type=vpn]
+	3. "AwesomeCo" (type="vpn", uuid="guid-guid-guid-guid-guid")
  
-## If you narrow it down to a single result, it asks you if you wish to connect to it. The default, as shown by the capital Y, is to connect, so just hit enter and it will connect you.
+## If you narrow it down to a single result, it asks you if you wish to connect to it.
+## The default, as shown by the capital Y, is to connect, so just hit enter and it will connect you.
 ## If you don't wish to connect, either ctrl+c or type n<enter> and it won't.
-$ vpn awesome
-[type=vpn search=awesome]
-3. "AwesomeCo" (type="vpn", uuid="guid-guid-guid-guid-guid")
---> Start connection to: "AwesomeCo"? [Y/n]
+	$ vpn awesome
+	[type=vpn search=awesome]
+	3. "AwesomeCo" (type="vpn", uuid="guid-guid-guid-guid-guid")
+	--> Start connection to: "AwesomeCo"? [Y/n]
 
 ### Another example by narrowing down to the connection number
-$ vpn 3
-[type=vpn search=3]
-3. "AWESOMEco" (type="vpn", uuid="guid-guid-guid-guid-guid")
---> Start connection to: "AwesomeCo"? [Y/n]
+	$ vpn 3
+	[type=vpn search=3]
+	3. "AWESOMEco" (type="vpn", uuid="guid-guid-guid-guid-guid")
+	--> Start connection to: "AwesomeCo"? [Y/n]
 
 
